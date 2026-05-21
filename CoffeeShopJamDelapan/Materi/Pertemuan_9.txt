@@ -1,0 +1,15 @@
+- Install Bcrypt.Net-Next (NuGet Package)
+- Hash Password (Salt di Visual 2)
+- Item panel
+- ALTER TABLE db_coffee_shop_delapan.item_stock ADD price DOUBLE NULL;
+
+
+- reset password yang dikirim ke email member yang sudah terdaftar
+- google smtp setting:
+  1. buka google account
+  2. Aktifkan 2-Step Verification jika belum.
+  3. Cari menu App Passwords.
+  4. Beri nama (misal: "Aplikasi Desktop C#").
+  5. App password: ygve bjnk bvtz msng
+- kirim email
+- update password db
