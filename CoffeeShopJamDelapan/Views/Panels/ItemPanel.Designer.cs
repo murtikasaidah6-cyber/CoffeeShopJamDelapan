@@ -57,109 +57,117 @@
             dgvItem.AllowUserToAddRows = false;
             dgvItem.AllowUserToDeleteRows = false;
             dgvItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvItem.Location = new Point(378, 81);
+            dgvItem.Location = new Point(372, 108);
+            dgvItem.Margin = new Padding(3, 4, 3, 4);
             dgvItem.Name = "dgvItem";
             dgvItem.ReadOnly = true;
-            dgvItem.Size = new Size(473, 419);
+            dgvItem.RowHeadersWidth = 51;
+            dgvItem.Size = new Size(513, 559);
             dgvItem.TabIndex = 0;
             dgvItem.SelectionChanged += DgvItem_SelectionChanged;
             // 
             // textSearch
             // 
-            textSearch.Location = new Point(636, 36);
+            textSearch.Location = new Point(630, 51);
+            textSearch.Margin = new Padding(3, 4, 3, 4);
             textSearch.Name = "textSearch";
-            textSearch.Size = new Size(215, 23);
+            textSearch.Size = new Size(245, 27);
             textSearch.TabIndex = 2;
             textSearch.TextChanged += textSearch_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(588, 39);
+            label1.Location = new Point(571, 54);
             label1.Name = "label1";
-            label1.Size = new Size(42, 15);
+            label1.Size = new Size(53, 20);
             label1.TabIndex = 3;
             label1.Text = "Search";
             // 
             // textTitle
             // 
-            textTitle.Location = new Point(35, 107);
+            textTitle.Location = new Point(40, 143);
+            textTitle.Margin = new Padding(3, 4, 3, 4);
             textTitle.Name = "textTitle";
-            textTitle.Size = new Size(285, 23);
+            textTitle.Size = new Size(325, 27);
             textTitle.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 89);
+            label2.Location = new Point(40, 119);
             label2.Name = "label2";
-            label2.Size = new Size(30, 15);
+            label2.Size = new Size(38, 20);
             label2.TabIndex = 5;
             label2.Text = "Title";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 141);
+            label3.Location = new Point(40, 188);
             label3.Name = "label3";
-            label3.Size = new Size(80, 15);
+            label3.Size = new Size(99, 20);
             label3.TabIndex = 7;
             label3.Text = "Measurement";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 194);
+            label4.Location = new Point(40, 259);
             label4.Name = "label4";
-            label4.Size = new Size(53, 15);
+            label4.Size = new Size(65, 20);
             label4.TabIndex = 9;
             label4.Text = "Quantity";
             // 
             // textQty
             // 
-            textQty.Location = new Point(35, 212);
+            textQty.Location = new Point(40, 283);
+            textQty.Margin = new Padding(3, 4, 3, 4);
             textQty.Name = "textQty";
-            textQty.Size = new Size(285, 23);
+            textQty.Size = new Size(325, 27);
             textQty.TabIndex = 8;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 250);
+            label5.Location = new Point(40, 333);
             label5.Name = "label5";
-            label5.Size = new Size(33, 15);
+            label5.Size = new Size(41, 20);
             label5.TabIndex = 11;
             label5.Text = "Price";
             // 
             // textPrice
             // 
-            textPrice.Location = new Point(35, 268);
+            textPrice.Location = new Point(40, 357);
+            textPrice.Margin = new Padding(3, 4, 3, 4);
             textPrice.Name = "textPrice";
-            textPrice.Size = new Size(285, 23);
+            textPrice.Size = new Size(325, 27);
             textPrice.TabIndex = 10;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(35, 304);
+            label6.Location = new Point(40, 405);
             label6.Name = "label6";
-            label6.Size = new Size(69, 15);
+            label6.Size = new Size(88, 20);
             label6.TabIndex = 13;
             label6.Text = "Last Update";
             // 
             // textLastUpdate
             // 
-            textLastUpdate.Location = new Point(35, 322);
+            textLastUpdate.Location = new Point(40, 429);
+            textLastUpdate.Margin = new Padding(3, 4, 3, 4);
             textLastUpdate.Name = "textLastUpdate";
             textLastUpdate.ReadOnly = true;
-            textLastUpdate.Size = new Size(285, 23);
+            textLastUpdate.Size = new Size(325, 27);
             textLastUpdate.TabIndex = 12;
             // 
             // textIdItem
             // 
-            textIdItem.Location = new Point(32, 535);
+            textIdItem.Location = new Point(37, 713);
+            textIdItem.Margin = new Padding(3, 4, 3, 4);
             textIdItem.Name = "textIdItem";
-            textIdItem.Size = new Size(225, 23);
+            textIdItem.Size = new Size(257, 27);
             textIdItem.TabIndex = 14;
             textIdItem.Visible = false;
             // 
@@ -167,17 +175,18 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(35, 25);
+            label7.Location = new Point(40, 33);
             label7.Name = "label7";
-            label7.Size = new Size(66, 32);
+            label7.Size = new Size(83, 41);
             label7.TabIndex = 15;
             label7.Text = "Item";
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(35, 362);
+            buttonClear.Location = new Point(40, 483);
+            buttonClear.Margin = new Padding(3, 4, 3, 4);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(85, 33);
+            buttonClear.Size = new Size(97, 44);
             buttonClear.TabIndex = 16;
             buttonClear.Text = "Clear";
             buttonClear.UseVisualStyleBackColor = true;
@@ -185,9 +194,10 @@
             // 
             // buttonSubmit
             // 
-            buttonSubmit.Location = new Point(130, 362);
+            buttonSubmit.Location = new Point(149, 483);
+            buttonSubmit.Margin = new Padding(3, 4, 3, 4);
             buttonSubmit.Name = "buttonSubmit";
-            buttonSubmit.Size = new Size(85, 33);
+            buttonSubmit.Size = new Size(97, 44);
             buttonSubmit.TabIndex = 17;
             buttonSubmit.Text = "Submit";
             buttonSubmit.UseVisualStyleBackColor = true;
@@ -195,9 +205,10 @@
             // 
             // buttonNew
             // 
-            buttonNew.Location = new Point(481, 506);
+            buttonNew.Location = new Point(501, 675);
+            buttonNew.Margin = new Padding(3, 4, 3, 4);
             buttonNew.Name = "buttonNew";
-            buttonNew.Size = new Size(85, 33);
+            buttonNew.Size = new Size(97, 44);
             buttonNew.TabIndex = 18;
             buttonNew.Text = "New";
             buttonNew.UseVisualStyleBackColor = true;
@@ -205,9 +216,10 @@
             // 
             // buttonRefresh
             // 
-            buttonRefresh.Location = new Point(663, 506);
+            buttonRefresh.Location = new Point(707, 675);
+            buttonRefresh.Margin = new Padding(3, 4, 3, 4);
             buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(85, 33);
+            buttonRefresh.Size = new Size(97, 44);
             buttonRefresh.TabIndex = 21;
             buttonRefresh.Text = "Refresh";
             buttonRefresh.UseVisualStyleBackColor = true;
@@ -215,9 +227,10 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(572, 506);
+            buttonDelete.Location = new Point(604, 675);
+            buttonDelete.Margin = new Padding(3, 4, 3, 4);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(85, 33);
+            buttonDelete.Size = new Size(97, 44);
             buttonDelete.TabIndex = 20;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
@@ -227,23 +240,24 @@
             // 
             comboMeasurement.FormattingEnabled = true;
             comboMeasurement.Items.AddRange(new object[] { "Grams", "Mililitres", "Pieces" });
-            comboMeasurement.Location = new Point(32, 159);
+            comboMeasurement.Location = new Point(37, 212);
+            comboMeasurement.Margin = new Padding(3, 4, 3, 4);
             comboMeasurement.Name = "comboMeasurement";
-            comboMeasurement.Size = new Size(288, 23);
+            comboMeasurement.Size = new Size(329, 28);
             comboMeasurement.TabIndex = 22;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(378, 63);
+            label8.Location = new Point(372, 84);
             label8.Name = "label8";
-            label8.Size = new Size(52, 15);
+            label8.Size = new Size(65, 20);
             label8.TabIndex = 23;
             label8.Text = "Item List";
             // 
             // ItemPanel
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(label8);
             Controls.Add(comboMeasurement);
@@ -266,8 +280,9 @@
             Controls.Add(label1);
             Controls.Add(textSearch);
             Controls.Add(dgvItem);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ItemPanel";
-            Size = new Size(875, 575);
+            Size = new Size(902, 767);
             ((System.ComponentModel.ISupportInitialize)dgvItem).EndInit();
             ResumeLayout(false);
             PerformLayout();

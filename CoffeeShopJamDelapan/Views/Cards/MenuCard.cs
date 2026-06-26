@@ -30,47 +30,55 @@ namespace CoffeeShopJamDelapan.Views.Cards
 
             }
 
+
+
+
             labelName.Text = recipe.Code + "-" + recipe.Name;
             labelPrice.Text = recipe.Price.HasValue ? $"IDR {recipe.Price:0.00}"
                 : "Price not available";
             buttonAddCart.Tag = recipe;
-            buttonAddCart.Click += buttonAddCard_Click;
+            buttonAddCart.Click += ButtonAddCard_Click;
 
         }
 
-        private void buttonAddCard_Click(object sender, EventArgs e)
+        private void ButtonAddCard_Click(object? s, EventArgs e)
         {
-            var item = new CartItem
+            int qty = int.Parse(textBoxQty.Text);
+            if (qty == 0)
             {
-                RecipeId = _recipe.IdReceipt,
-                RecipeCode = _recipe.Code,
-                RecipeName = _recipe.Name,
-                Qty = 1,
-                UnitPrice = _recipe.Price ?? 0
-            };
-
-            if (_cart != null)
-            {
-                var existing = _cart.Find(x => x.RecipeId == item.RecipeId);
-
-                if (existing != null)
-                    existing.Qty += 1;
-                else
-                    _cart.Add(item);
+                MessageBox.Show("Quantity must be a number greater than 0.", "Invalid Quantity",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+                var item = new CartItem
+                {
+                    RecipeId = _recipe.IdReceipt,
+                    RecipeCode = _recipe.Code,
+                    RecipeName = _recipe.Name,
+                    Qty = qty,
+                    UnitPrice = _recipe.Price ?? 0
+                };
 
-            CoffeeShopJamDelapan.Services.CartService.Instance.Add(new CartItem
-            {
-                RecipeId = item.RecipeId,
-                RecipeCode = item.RecipeCode,
-                RecipeName = item.RecipeName,
-                Qty = item.Qty,
-                UnitPrice = item.UnitPrice
-            });
+                if (_cart != null)
+                {
+                    var existing = _cart.Find(x => x.RecipeId == item.RecipeId);
+                    if (existing != null) existing.Qty += 1;
+                    else _cart.Add(item);
+                }
 
-            _cartPanel?.RefreshCartGrid(_cart);
-        }
+                CoffeeShopJamDelapan.Services.CartService.Instance.Add(new CartItem
+                {
+                    RecipeId = item.RecipeId,
+                    RecipeCode = item.RecipeCode,
+                    RecipeName = item.RecipeName,
+                    Qty = item.Qty,
+                    UnitPrice = item.UnitPrice
+                });
+
+                _cartPanel?.RefreshCartGrid(_cart);
+            }
         
+
 
         private void MenuCard_Load(object sender, EventArgs e)
         {

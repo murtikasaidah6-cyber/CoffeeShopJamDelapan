@@ -32,6 +32,7 @@
             labelName = new Label();
             labelPrice = new Label();
             buttonAddCart = new Button();
+            textBoxQty = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxMenu).BeginInit();
             SuspendLayout();
             // 
@@ -39,14 +40,14 @@
             // 
             pictureBoxMenu.Location = new Point(6, 6);
             pictureBoxMenu.Name = "pictureBoxMenu";
-            pictureBoxMenu.Size = new Size(140, 120);
+            pictureBoxMenu.Size = new Size(185, 120);
             pictureBoxMenu.TabIndex = 0;
             pictureBoxMenu.TabStop = false;
             // 
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(45, 129);
+            labelName.Location = new Point(6, 129);
             labelName.Name = "labelName";
             labelName.Size = new Size(50, 20);
             labelName.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             labelPrice.AutoSize = true;
             labelPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelPrice.Location = new Point(32, 149);
+            labelPrice.Location = new Point(6, 149);
             labelPrice.Name = "labelPrice";
             labelPrice.Size = new Size(63, 28);
             labelPrice.TabIndex = 2;
@@ -64,25 +65,33 @@
             // 
             // buttonAddCart
             // 
-            buttonAddCart.Location = new Point(17, 190);
+            buttonAddCart.Location = new Point(6, 190);
             buttonAddCart.Name = "buttonAddCart";
             buttonAddCart.Size = new Size(108, 29);
             buttonAddCart.TabIndex = 3;
             buttonAddCart.Text = "Add To Cart";
             buttonAddCart.UseVisualStyleBackColor = true;
-            buttonAddCart.Click += buttonAddCard_Click;
+            buttonAddCart.Click += ButtonAddCard_Click;
+            // 
+            // textBoxQty
+            // 
+            textBoxQty.Location = new Point(129, 192);
+            textBoxQty.Name = "textBoxQty";
+            textBoxQty.Size = new Size(47, 27);
+            textBoxQty.TabIndex = 4;
             // 
             // MenuCard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GrayText;
+            Controls.Add(textBoxQty);
             Controls.Add(buttonAddCart);
             Controls.Add(labelPrice);
             Controls.Add(labelName);
             Controls.Add(pictureBoxMenu);
             Name = "MenuCard";
-            Size = new Size(150, 230);
+            Size = new Size(194, 230);
             Load += MenuCard_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxMenu).EndInit();
             ResumeLayout(false);
@@ -95,5 +104,6 @@
         private Label labelName;
         private Label labelPrice;
         private Button buttonAddCart;
+        private TextBox textBoxQty;
     }
 }

@@ -17,10 +17,10 @@ namespace CoffeeShopJamDelapan.Repo
         // connection pool
         private static MySqlConnectionStringBuilder DefaultBuilder => new()
         {
-            Server = "localhost",
+            Server = "103.82.242.90",
             Port = 3306,
-            Database = "db_coffee_shop_jam_delapan",
-            UserID = "root",
+            Database = "db_coffee_shop_delapan",
+            UserID = "exadash",
             Password = "12Qpalzmxn.",
             Pooling = true,
             MinimumPoolSize = 0,

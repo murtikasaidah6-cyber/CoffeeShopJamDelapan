@@ -403,7 +403,7 @@
             Controls.Add(dgvRecipes);
             Margin = new Padding(3, 4, 3, 4);
             Name = "RecipePanel";
-            Size = new Size(1000, 767);
+            Size = new Size(902, 767);
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();

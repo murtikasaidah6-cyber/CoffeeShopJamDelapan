@@ -35,7 +35,7 @@
             labelTax = new Label();
             labelTotal = new Label();
             buttonCheckout = new Button();
-            buttonClear = new Button();
+            buttonClearCart = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
             SuspendLayout();
             // 
@@ -69,29 +69,30 @@
             // labelSubtotal
             // 
             labelSubtotal.AutoSize = true;
-            labelSubtotal.Location = new Point(97, 472);
+            labelSubtotal.Location = new Point(15, 465);
             labelSubtotal.Name = "labelSubtotal";
-            labelSubtotal.Size = new Size(50, 20);
+            labelSubtotal.Size = new Size(99, 20);
             labelSubtotal.TabIndex = 3;
-            labelSubtotal.Text = "label1";
+            labelSubtotal.Text = "VVVVVVVVVV";
             // 
             // labelTax
             // 
             labelTax.AutoSize = true;
-            labelTax.Location = new Point(97, 507);
+            labelTax.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTax.Location = new Point(10, 499);
             labelTax.Name = "labelTax";
-            labelTax.Size = new Size(50, 20);
+            labelTax.Size = new Size(100, 25);
             labelTax.TabIndex = 4;
-            labelTax.Text = "label1";
+            labelTax.Text = "VVVVVVVV";
             // 
             // labelTotal
             // 
             labelTotal.AutoSize = true;
-            labelTotal.Location = new Point(97, 549);
+            labelTotal.Location = new Point(15, 549);
             labelTotal.Name = "labelTotal";
-            labelTotal.Size = new Size(50, 20);
+            labelTotal.Size = new Size(54, 20);
             labelTotal.TabIndex = 5;
-            labelTotal.Text = "label1";
+            labelTotal.Text = "VVVVV";
             // 
             // buttonCheckout
             // 
@@ -102,20 +103,20 @@
             buttonCheckout.Text = "Checkuot";
             buttonCheckout.UseVisualStyleBackColor = true;
             // 
-            // buttonClear
+            // buttonClearCart
             // 
-            buttonClear.Location = new Point(15, 633);
-            buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(288, 29);
-            buttonClear.TabIndex = 7;
-            buttonClear.Text = "Clear";
-            buttonClear.UseVisualStyleBackColor = true;
+            buttonClearCart.Location = new Point(15, 616);
+            buttonClearCart.Name = "buttonClearCart";
+            buttonClearCart.Size = new Size(288, 29);
+            buttonClearCart.TabIndex = 7;
+            buttonClearCart.Text = "Clear";
+            buttonClearCart.UseVisualStyleBackColor = true;
             // 
             // MyCartPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(buttonClear);
+            Controls.Add(buttonClearCart);
             Controls.Add(buttonCheckout);
             Controls.Add(labelTotal);
             Controls.Add(labelTax);
@@ -124,8 +125,7 @@
             Controls.Add(comboBoxMember);
             Controls.Add(label1);
             Name = "MyCartPanel";
-            Size = new Size(1000, 767);
-            Load += MyCartPanel_Load;
+            Size = new Size(333, 767);
             ((System.ComponentModel.ISupportInitialize)dgvCart).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -140,6 +140,6 @@
         private Label labelTax;
         private Label labelTotal;
         private Button buttonCheckout;
-        private Button buttonClear;
+        private Button buttonClearCart;
     }
 }

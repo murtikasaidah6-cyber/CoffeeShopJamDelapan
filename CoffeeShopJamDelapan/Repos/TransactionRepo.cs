@@ -123,5 +123,37 @@ VALUES (@id_member, @code, @n_menu, @transaction_date, @subtotal, @id_discount, 
             var affected = await cmd.ExecuteNonQueryAsync();
             return affected > 0;
         }
-    }
+
+        public async Task<List<Transaction>> GetAllFilterDateAsync(DateTime strart, DateTime end)
+        {
+            var list = new List<Transaction>();
+            await using var conn = await Database.GetOpenConnectionAsync();
+            await using var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT id_transaction, id_member, code, n_menu, transaction_date, subtotal, id_discount, discount, tax_rate, tax, total, paid, `change` FROM `transaction`";
+            cmd.Parameters.Add("@strart", MySqlDbType.DateTime).Value = strart;//6
+            cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = end.AddDays(1);// 7 (12AM) // end.Addhours(23).Addminute(59).AddSeconds(59)
+            using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                list.Add(new Transaction
+                {
+                    IdTransaction = reader.GetInt32("id_transaction"),
+                    IdMember = reader.GetInt32("id_member"),
+                    Code = reader.GetString("code"),
+                    NMenu = reader.GetInt32("n_menu"),
+                    TransactionDate = reader.IsDBNull("transaction_date") ? null : reader.GetDateTime("transaction_date"),
+                    Subtotal = reader.IsDBNull("subtotal") ? null : reader.GetDouble("subtotal"),
+                    IdDiscount = reader.IsDBNull("id_discount") ? null : reader.GetInt32("id_discount"),
+                    Discount = reader.IsDBNull("discount") ? null : reader.GetDouble("discount"),
+                    TaxRate = reader.IsDBNull("tax_rate") ? null : reader.GetDouble("tax_rate"),
+                    Tax = reader.IsDBNull("tax") ? null : reader.GetDouble("tax"),
+                    Total = reader.IsDBNull("total") ? null : reader.GetDouble("total"),
+                    Paid = reader.IsDBNull("paid") ? null : reader.GetDouble("paid"),
+                    Change = reader.IsDBNull("change") ? null : reader.GetDouble("change"),
+                });
+            }
+            return list;
+
+        }
+        }
 }

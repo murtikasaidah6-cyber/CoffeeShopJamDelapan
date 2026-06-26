@@ -12,9 +12,11 @@ namespace CoffeeShopJamDelapan.Repo
         {
             await using var conn = await Database.GetOpenConnectionAsync();
             await using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"INSERT INTO recipe (code,name,type,id_item_a,id_item_b,id_item_c,id_item_d,qty_item_a,qty_item_b,qty_item_c,qty_item_d,recipe_instruction,saving_instruction,last_update,is_deleted)
-VALUES (@code,@name,@type,@id_item_a,@id_item_b,@id_item_c,@id_item_d,@qty_item_a,@qty_item_b,@qty_item_c,@qty_item_d,@recipe_instruction,@saving_instruction,@last_update,@is_deleted);
-SELECT LAST_INSERT_ID();";
+            cmd.CommandText = @"INSERT INTO recipe (code,name,type,id_item_a,id_item_b,id_item_c,id_item_d,qty_item_a,qty_item_b,qty_item_c,qty_item_d,recipe_instruction,
+                saving_instruction,image_path,price,last_update,is_deleted)
+                VALUES (@code,@name,@type,@id_item_a,@id_item_b,@id_item_c,@id_item_d,@qty_item_a,@qty_item_b,@qty_item_c,@qty_item_d,@recipe_instruction,
+                @saving_instruction,@image_path,@price,@last_update,@is_deleted);
+                SELECT LAST_INSERT_ID();";
             cmd.Parameters.Add("@code", MySqlDbType.VarChar, 5).Value = r.Code;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar, 200).Value = (object?)r.Name ?? System.DBNull.Value;
             cmd.Parameters.Add("@type", MySqlDbType.VarChar, 30).Value = (object?)r.Type ?? System.DBNull.Value;
@@ -28,6 +30,8 @@ SELECT LAST_INSERT_ID();";
             cmd.Parameters.Add("@qty_item_d", MySqlDbType.Double).Value = (object?)r.QtyItemD ?? System.DBNull.Value;
             cmd.Parameters.Add("@recipe_instruction", MySqlDbType.VarChar, 1000).Value = (object?)r.RecipeInstruction ?? System.DBNull.Value;
             cmd.Parameters.Add("@saving_instruction", MySqlDbType.VarChar, 1000).Value = (object?)r.SavingInstruction ?? System.DBNull.Value;
+            cmd.Parameters.Add("@image_path", MySqlDbType.VarChar, 500).Value = (object?)r.ImagePath ?? System.DBNull.Value;
+            cmd.Parameters.Add("@price", MySqlDbType.Double).Value = (object?)r.Price ?? System.DBNull.Value;
             // optional price column if recipe stores price
             // cmd.Parameters.Add("@price", MySqlDbType.Double).Value = (object?)r.Price ?? System.DBNull.Value;
             cmd.Parameters.Add("@last_update", MySqlDbType.DateTime).Value = (object?)r.LastUpdate ?? System.DBNull.Value;
@@ -41,7 +45,9 @@ SELECT LAST_INSERT_ID();";
         {
             await using var conn = await Database.GetOpenConnectionAsync();
             await using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT id_receipt, code, name, type, id_item_a, id_item_b, id_item_c, id_item_d, qty_item_a, qty_item_b, qty_item_c, qty_item_d, recipe_instruction, saving_instruction, last_update, is_deleted FROM recipe WHERE id_receipt=@id AND (is_deleted IS NULL OR is_deleted != '1') LIMIT 1";
+            cmd.CommandText = "SELECT id_receipt, code, name, type, id_item_a, id_item_b, id_item_c, id_item_d, qty_item_a, qty_item_b, " +
+                "qty_item_c, qty_item_d, recipe_instruction, saving_instruction, image_path, price, last_update, is_deleted " +
+                "FROM recipe WHERE id_receipt=@id AND (is_deleted IS NULL OR is_deleted != '1') LIMIT 1";
             cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             await cmd.PrepareAsync();
             using var reader = await cmd.ExecuteReaderAsync();
@@ -63,6 +69,8 @@ SELECT LAST_INSERT_ID();";
                     QtyItemD = reader.IsDBNull("qty_item_d") ? null : reader.GetDouble("qty_item_d"),
                     RecipeInstruction = reader.IsDBNull("recipe_instruction") ? null : reader.GetString("recipe_instruction"),
                     SavingInstruction = reader.IsDBNull("saving_instruction") ? null : reader.GetString("saving_instruction"),
+                    ImagePath = reader.IsDBNull("image_path") ? null : reader.GetString("image_path"),
+                    Price = reader.IsDBNull("price") ? null : reader.GetDouble("price"),
                     LastUpdate = reader.IsDBNull("last_update") ? null : reader.GetDateTime("last_update"),
                     IsDeleted = reader.IsDBNull("is_deleted") ? null : reader.GetString("is_deleted"),
                 };
@@ -75,7 +83,8 @@ SELECT LAST_INSERT_ID();";
             var list = new List<Recipe>();
             await using var conn = await Database.GetOpenConnectionAsync();
             await using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT id_receipt, code, name, type, id_item_a, id_item_b, id_item_c, id_item_d, qty_item_a, qty_item_b, qty_item_c, qty_item_d, recipe_instruction, saving_instruction, last_update, is_deleted FROM recipe WHERE (is_deleted IS NULL OR is_deleted != '1')";
+            cmd.CommandText = "SELECT id_receipt, code, name, type, id_item_a, id_item_b, id_item_c, id_item_d, qty_item_a, qty_item_b, qty_item_c, qty_item_d, recipe_instruction, " +
+                "saving_instruction, image_path, price, last_update, is_deleted FROM recipe WHERE (is_deleted IS NULL OR is_deleted != '1')";
             using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
@@ -95,6 +104,8 @@ SELECT LAST_INSERT_ID();";
                     QtyItemD = reader.IsDBNull("qty_item_d") ? null : reader.GetDouble("qty_item_d"),
                     RecipeInstruction = reader.IsDBNull("recipe_instruction") ? null : reader.GetString("recipe_instruction"),
                     SavingInstruction = reader.IsDBNull("saving_instruction") ? null : reader.GetString("saving_instruction"),
+                    ImagePath = reader.IsDBNull("image_path") ? null : reader.GetString("image_path"),
+                    Price = reader.IsDBNull("price") ? null : reader.GetDouble("price"),
                     LastUpdate = reader.IsDBNull("last_update") ? null : reader.GetDateTime("last_update"),
                     IsDeleted = reader.IsDBNull("is_deleted") ? null : reader.GetString("is_deleted"),
                 });
@@ -106,7 +117,9 @@ SELECT LAST_INSERT_ID();";
         {
             await using var conn = await Database.GetOpenConnectionAsync();
             await using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"UPDATE recipe SET code=@code, name=@name, type=@type, id_item_a=@id_item_a, id_item_b=@id_item_b, id_item_c=@id_item_c, id_item_d=@id_item_d, qty_item_a=@qty_item_a, qty_item_b=@qty_item_b, qty_item_c=@qty_item_c, qty_item_d=@qty_item_d, recipe_instruction=@recipe_instruction, saving_instruction=@saving_instruction, last_update=@last_update, is_deleted=@is_deleted WHERE id_receipt=@id";
+            cmd.CommandText = @"UPDATE recipe SET code=@code, name=@name, type=@type, id_item_a=@id_item_a, id_item_b=@id_item_b, id_item_c=@id_item_c, 
+                id_item_d=@id_item_d, qty_item_a=@qty_item_a, qty_item_b=@qty_item_b, qty_item_c=@qty_item_c, qty_item_d=@qty_item_d, recipe_instruction=@recipe_instruction, 
+                saving_instruction=@saving_instruction, image_path=@image_path, price=@price, last_update=@last_update, is_deleted=@is_deleted WHERE id_receipt=@id";
             cmd.Parameters.Add("@code", MySqlDbType.VarChar, 5).Value = r.Code;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar, 200).Value = (object?)r.Name ?? System.DBNull.Value;
             cmd.Parameters.Add("@type", MySqlDbType.VarChar, 30).Value = (object?)r.Type ?? System.DBNull.Value;
@@ -120,6 +133,8 @@ SELECT LAST_INSERT_ID();";
             cmd.Parameters.Add("@qty_item_d", MySqlDbType.Double).Value = (object?)r.QtyItemD ?? System.DBNull.Value;
             cmd.Parameters.Add("@recipe_instruction", MySqlDbType.VarChar, 1000).Value = (object?)r.RecipeInstruction ?? System.DBNull.Value;
             cmd.Parameters.Add("@saving_instruction", MySqlDbType.VarChar, 1000).Value = (object?)r.SavingInstruction ?? System.DBNull.Value;
+            cmd.Parameters.Add("@image_path", MySqlDbType.VarChar, 500).Value = (object?)r.ImagePath ?? System.DBNull.Value;
+            cmd.Parameters.Add("@price", MySqlDbType.Double).Value = (object?)r.Price ?? System.DBNull.Value;
             cmd.Parameters.Add("@last_update", MySqlDbType.DateTime).Value = (object?)r.LastUpdate ?? System.DBNull.Value;
             cmd.Parameters.Add("@is_deleted", MySqlDbType.VarChar, 1).Value = (object?)r.IsDeleted ?? System.DBNull.Value;
             cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = r.IdReceipt;

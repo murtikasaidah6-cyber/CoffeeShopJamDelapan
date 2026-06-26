@@ -64,7 +64,7 @@
             buttonCoffee.BackColor = Color.LightCoral;
             buttonCoffee.Location = new Point(137, 77);
             buttonCoffee.Name = "buttonCoffee";
-            buttonCoffee.Size = new Size(94, 29);
+            buttonCoffee.Size = new Size(80, 29);
             buttonCoffee.TabIndex = 2;
             buttonCoffee.Text = "Coffee";
             buttonCoffee.UseVisualStyleBackColor = false;
@@ -72,9 +72,9 @@
             // buttonNonCoffee
             // 
             buttonNonCoffee.BackColor = Color.LightCoral;
-            buttonNonCoffee.Location = new Point(249, 77);
+            buttonNonCoffee.Location = new Point(234, 77);
             buttonNonCoffee.Name = "buttonNonCoffee";
-            buttonNonCoffee.Size = new Size(94, 29);
+            buttonNonCoffee.Size = new Size(92, 29);
             buttonNonCoffee.TabIndex = 3;
             buttonNonCoffee.Text = "Non-Coffee";
             buttonNonCoffee.UseVisualStyleBackColor = false;
@@ -82,7 +82,7 @@
             // buttonAppetizer
             // 
             buttonAppetizer.BackColor = Color.LightCoral;
-            buttonAppetizer.Location = new Point(363, 77);
+            buttonAppetizer.Location = new Point(342, 76);
             buttonAppetizer.Name = "buttonAppetizer";
             buttonAppetizer.Size = new Size(94, 29);
             buttonAppetizer.TabIndex = 4;
@@ -92,7 +92,7 @@
             // buttonMainCourse
             // 
             buttonMainCourse.BackColor = Color.LightCoral;
-            buttonMainCourse.Location = new Point(475, 77);
+            buttonMainCourse.Location = new Point(452, 76);
             buttonMainCourse.Name = "buttonMainCourse";
             buttonMainCourse.Size = new Size(94, 29);
             buttonMainCourse.TabIndex = 5;
@@ -102,7 +102,7 @@
             // buttonDesert
             // 
             buttonDesert.BackColor = Color.LightCoral;
-            buttonDesert.Location = new Point(588, 77);
+            buttonDesert.Location = new Point(552, 77);
             buttonDesert.Name = "buttonDesert";
             buttonDesert.Size = new Size(94, 29);
             buttonDesert.TabIndex = 6;
@@ -112,7 +112,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(717, 77);
+            label2.Location = new Point(652, 81);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
             label2.TabIndex = 7;
@@ -120,7 +120,7 @@
             // 
             // textBoxSearch
             // 
-            textBoxSearch.Location = new Point(773, 77);
+            textBoxSearch.Location = new Point(703, 77);
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(199, 27);
             textBoxSearch.TabIndex = 8;
@@ -129,7 +129,7 @@
             // 
             flowLayoutMenu.Location = new Point(26, 134);
             flowLayoutMenu.Name = "flowLayoutMenu";
-            flowLayoutMenu.Size = new Size(946, 608);
+            flowLayoutMenu.Size = new Size(836, 608);
             flowLayoutMenu.TabIndex = 9;
             // 
             // TransactionPanel
@@ -149,8 +149,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "TransactionPanel";
-            Size = new Size(1000, 767);
-            Load += TransactionPanel_Load;
+            Size = new Size(902, 767);
             ResumeLayout(false);
             PerformLayout();
         }

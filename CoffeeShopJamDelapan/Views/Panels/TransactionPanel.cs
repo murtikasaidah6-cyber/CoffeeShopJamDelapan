@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CoffeeShopJamDelapan.Models;
 using CoffeeShopJamDelapan.Repo;
+using CoffeeShopJamDelapan.Views.Cards;
 
 namespace CoffeeShopJamDelapan.Views.Panels
 {
@@ -13,7 +14,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
         private readonly RecipeRepo _recipeRepo = new();
         private readonly ItemRepo _itemRepo = new();
         private readonly MemberRepo _memberRepo = new();
-        private List<CartItem> _cart = new();
+        
         private List<CartItem> _cart = new();
         private MyCartPanel _cartPanel;
 
@@ -59,7 +60,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             foreach (var r in recipes)
             {
                 //Panel panel = MenuCard(r);
-
+                MenuCard panel = new MenuCard(r, _cart, _cartPanel);
                 flowLayoutMenu.Controls.Add(panel);
                 idx++;
             }

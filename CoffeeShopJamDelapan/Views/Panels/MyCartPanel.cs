@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CoffeeShopJamDelapan.Services;
+using CoffeeShopJamDelapan.Views.Forms;
 
 namespace CoffeeShopJamDelapan.Views.Panels
 {
@@ -18,10 +19,13 @@ namespace CoffeeShopJamDelapan.Views.Panels
         private readonly TransactionRepo _txRepo = new();
         private readonly MemberRepo _memberRepo = new();
         private List<CartItem> _cart = new();
-        public MyCartPanel()
+        private AdminForm _adminForm;
+
+        public MyCartPanel(AdminForm adminForm) // ditambah  
         {
             InitializeComponent();
-            buttonClear.Click += (s, e) => { _cart.Clear(); RefreshCartGrid(); };
+            _adminForm = adminForm; // di tambah 
+            buttonClearCart.Click += (s, e) => { _cart.Clear(); RefreshCartGrid(); };
             buttonCheckout.Click += ButtonCheckout_Click;
             _ = LoadMembersAsync();
             // subscribe to shared cart
@@ -34,6 +38,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             _cart.Clear();
             foreach (var it in CartService.Instance.Items) _cart.Add(new CartItem { RecipeId = it.RecipeId, RecipeCode = it.RecipeCode, RecipeName = it.RecipeName, Qty = it.Qty, UnitPrice = it.UnitPrice });
             RefreshCartGrid();
+
         }
 
         private async Task LoadMembersAsync()
@@ -106,13 +111,14 @@ namespace CoffeeShopJamDelapan.Views.Panels
 
         private async void ButtonCheckout_Click(object? sender, EventArgs e)
         {
-            if (_cart.Count == 0)
+            if (_cart.Count == 0) // _cart = koleksi menu/item yang ditambahkan dari transaction
             {
                 MessageBox.Show("Cart is empty");
                 return;
+                // enhance pop-up (audio: faahhh.mav)
             }
-            
-            if (comboBoxMember.SelectedItem == null)
+
+            if (comboBoxMember.SelectedItem == null) // memilih member
             {
                 MessageBox.Show("Please select a member");
                 return;
@@ -129,9 +135,9 @@ namespace CoffeeShopJamDelapan.Views.Panels
                 NMenu = _cart.Count,
                 TransactionDate = DateTime.Now,
                 Subtotal = _cart.Sum(c => c.LineTotal),
-                TaxRate = TaxRate,
-                Tax = Tax,
-                Total = Total,
+                TaxRate = 10, // ubah
+                Tax = _cart.Sum(c => c.LineTotal) * (10 / 100), // ubah
+                Total = _cart.Sum(c => c.LineTotal * (1 + (c.LineTotal + c.LineTotal) * (10 / 100))), //ubah
                 Paid = Paid,
                 Change = 0
             };
@@ -140,18 +146,22 @@ namespace CoffeeShopJamDelapan.Views.Panels
             var tir = new TransactionDetailsRepo();
             foreach (var c in _cart)
             {
-                var ti = new TransactionDetails { 
-                    IdTransaction = id, 
-                    IdRecipe = c.RecipeId, 
-                    Quantity = c.Qty, 
-                    Price = c.UnitPrice, 
-                    Total = c.LineTotal };
+                var ti = new TransactionDetails
+                {
+                    IdTransaction = id,
+                    IdRecipe = c.RecipeId,
+                    Quantity = c.Qty,
+                    Price = c.UnitPrice,
+                    Total = c.LineTotal
+                };
                 await tir.CreateAsync(ti);
             }
 
-            MessageBox.Show($"Transaction saved id={id}");
+            MessageBox.Show($"Transaction saved. Transaction Code is {tx.Code}");
             _cart.Clear();
             RefreshCartGrid();
+
+            _adminForm.showPaymentPanel(id);
         }
     }
 }
