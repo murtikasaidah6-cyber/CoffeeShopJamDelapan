@@ -6,10 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>CoffeeShopJamDelapan</AssemblyName>
+    <RootNamespace>CoffeeShopJamDelapan</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="MySql.Data" Version="9.7.0" />
     <PackageReference Include="MySqlConnector" Version="2.5.0" />
   </ItemGroup>
 

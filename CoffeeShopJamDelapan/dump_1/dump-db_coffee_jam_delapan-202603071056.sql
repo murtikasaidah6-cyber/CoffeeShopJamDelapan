@@ -19,64 +19,63 @@
 -- Table structure for table `item_stock`
 --
 
-DROP TABLE IF EXISTS `item_stock`;
+DROP TABLE IF EXISTS `medicine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `item_stock` (
-  `id_item` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
-  `code` varchar(8) NOT NULL COMMENT 'kode item',
-  `title` varchar(200) DEFAULT NULL COMMENT 'nama item',
-  `measurement` varchar(100) DEFAULT NULL COMMENT 'satuan ukur',
-  `quantity` double DEFAULT NULL COMMENT 'stock terkini',
+CREATE TABLE `medicine` (
+  `id_medicine` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
+  `code` varchar(50) NOT NULL COMMENT 'kode obat',
+  `name` varchar(100) NOT NULL COMMENT 'nama obat',
+  `category` varchar(50) DEFAULT NULL COMMENT 'kategori obat',
+  `measurement` varchar(50) DEFAULT NULL COMMENT 'satuan ukur',
+  `quantity` int(11) DEFAULT 0 COMMENT 'stok terkini',
+  `price` decimal(10,2) DEFAULT 0.00 COMMENT 'harga obat',
+  `expired_date` date DEFAULT NULL COMMENT 'tanggal kedaluwarsa',
   `last_update` datetime DEFAULT NULL COMMENT 'terakhir diupdate',
-  `is_deleted` varchar(1) DEFAULT NULL COMMENT 'indikator terhapus atau tidak',
-  PRIMARY KEY (`id_item`),
-  UNIQUE KEY `item_stock_unique` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='stock item';
+  `is_deleted` varchar(5) DEFAULT 'false' COMMENT 'indikator terhapus atau tidak',
+  PRIMARY KEY (`id_medicine`),
+  UNIQUE KEY `medicine_unique` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='stok obat apotek';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item_stock`
+-- Dumping data for table `medicine`
 --
 
-LOCK TABLES `item_stock` WRITE;
-/*!40000 ALTER TABLE `item_stock` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_stock` ENABLE KEYS */;
+LOCK TABLES `medicine` WRITE;
+/*!40000 ALTER TABLE `medicine` DISABLE KEYS */;
+/*!40000 ALTER TABLE `medicine` ENABLE KEYS */;
 UNLOCK TABLES;
+--;[--
 
---
+
 -- Table structure for table `member`
 --
 
-DROP TABLE IF EXISTS `member`;
+DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `member` (
-  `id_member` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
-  `code` varchar(20) NOT NULL COMMENT 'kode member',
-  `full_name` varchar(100) DEFAULT NULL COMMENT 'nama lengkap',
-  `phone` varchar(16) DEFAULT NULL COMMENT 'telepon',
-  `email` varchar(200) DEFAULT NULL COMMENT 'email',
-  `username` varchar(100) NOT NULL COMMENT 'username member',
-  `password` varchar(400) DEFAULT NULL COMMENT 'password hash',
-  `last_update` datetime DEFAULT NULL COMMENT 'terakhir update atau login',
-  `is_deleted` varchar(1) DEFAULT NULL COMMENT 'indikator terhapus atau tidak',
-  PRIMARY KEY (`id_member`),
-  UNIQUE KEY `member_unique` (`code`),
-  UNIQUE KEY `member_unique_1` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='daftar member';
+CREATE TABLE `patient` (
+  `id_patient` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
+  `code` varchar(50) NOT NULL COMMENT 'kode pasien/pelanggan',
+  `name` varchar(100) NOT NULL COMMENT 'nama pasien',
+  `phone` varchar(20) DEFAULT NULL COMMENT 'nomor telepon pasien',
+  `address` text DEFAULT NULL COMMENT 'alamat tempat tinggal',
+  `last_update` datetime DEFAULT NULL COMMENT 'terakhir diupdate',
+  `is_deleted` varchar(5) DEFAULT 'false' COMMENT 'indikator terhapus atau tidak',
+  PRIMARY KEY (`id_patient`),
+  UNIQUE KEY `patient_unique` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='data pasien apotek';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `member`
+-- Dumping data for table `patient`
 --
 
-LOCK TABLES `member` WRITE;
-/*!40000 ALTER TABLE `member` DISABLE KEYS */;
-/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+LOCK TABLES `patient` WRITE;
+/*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
 -- Table structure for table `recipe`
 --
 
@@ -179,30 +178,29 @@ UNLOCK TABLES;
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
-  `code` varchar(8) NOT NULL COMMENT 'kode user',
-  `name` varchar(200) DEFAULT NULL COMMENT 'nama lengkap',
-  `phone` varchar(16) DEFAULT NULL COMMENT 'nomor telepon',
-  `email` varchar(200) DEFAULT NULL COMMENT 'email user',
-  `username` varchar(100) NOT NULL COMMENT 'username',
-  `password` varchar(400) DEFAULT NULL COMMENT 'password hash',
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `User_unique` (`code`),
-  UNIQUE KEY `User_username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Master User';
+CREATE TABLE `patient` (
+  `id_patient` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id mandatory',
+  `code` varchar(50) NOT NULL COMMENT 'kode pasien/pelanggan',
+  `name` varchar(100) NOT NULL COMMENT 'nama pasien',
+  `phone` varchar(20) DEFAULT NULL COMMENT 'nomor telepon pasien',
+  `address` text DEFAULT NULL COMMENT 'alamat tempat tinggal',
+  `last_update` datetime DEFAULT NULL COMMENT 'terakhir diupdate',
+  `is_deleted` varchar(5) DEFAULT 'false' COMMENT 'indikator terhapus atau tidak',
+  PRIMARY KEY (`id_patient`),
+  UNIQUE KEY `patient_unique` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='data pasien apotek';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `patient`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `patient` WRITE;
+/*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

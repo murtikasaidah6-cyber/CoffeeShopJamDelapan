@@ -28,7 +28,6 @@ namespace CoffeeShopJamDelapan.Views.Forms
         {
             var username = textBoxUsername.Text.Trim();
             var password = textBoxPassword.Text;
-
             var captcha = textBoxCaptcha.Text.Trim();
 
             if (captcha != _captcha)
@@ -44,14 +43,30 @@ namespace CoffeeShopJamDelapan.Views.Forms
             }
 
             var member = await _memberRepo.GetByUsernameAsync(username);
-            var isValid = BCrypt.Net.BCrypt.Verify(password, member.Password);
-            if (member == null || !isValid)
+
+            // ========================================================
+            // LOGIKA DIBAWAH INI SUDAH DIPERBAIKI (URUTANNYA DIBALIK):
+            // ========================================================
+
+            // 1. Cek apakah member-nya ketemu atau tidak di database
+            if (member == null)
             {
                 MessageBox.Show("Invalid credentials");
                 return;
             }
 
-            MessageBox.Show($"Welcome {member.FullName ?? member.Username}");
+            // 2. Jika dipastikan member ADA (tidak null), baru cek password BCrypt-nya
+            var isValid = BCrypt.Net.BCrypt.Verify(password, member.Password);
+            if (!isValid)
+            {
+                MessageBox.Show("Invalid credentials");
+                return;
+            }
+
+            // ========================================================
+
+            MessageBox.Show($"Welcome {member.Name ?? member.Username}");
+
             // open admin form for simplicity
             var f = new AdminForm();
             f.Show();
@@ -88,6 +103,11 @@ namespace CoffeeShopJamDelapan.Views.Forms
             var forgotPasswordForm = new ForgotPasswordForm();
             forgotPasswordForm.ShowDialog();
             this.Hide();
+        }
+
+        private void buttonLogin_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

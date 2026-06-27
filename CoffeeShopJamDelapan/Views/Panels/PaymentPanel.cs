@@ -79,7 +79,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             List<TransactionDetails> details = await _transactionDetailsRepo.GetByTransactionIdAsync(idTransaction); // collection
             foreach (TransactionDetails txd in details)
             {
-                Recipe recipe = await _recipeRepo.GetByIdAsync(txd.IdRecipe);
+                Prescription recipe = await _recipeRepo.GetByIdAsync(txd.IdRecipe);
                 OrderCard orderCard = new OrderCard(recipe, this, txd);
                 flowLayoutPayment.Invoke(delegate
                 {
@@ -100,7 +100,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             List<TransactionDetails> details = await transactionDetailsRepo.GetByTransactionIdAsync(_idTransaction);
             foreach (TransactionDetails txd in details)
             {
-                Recipe recipe = await recipeRepo.GetByIdAsync(txd.IdRecipe);
+                Prescription recipe = await recipeRepo.GetByIdAsync(txd.IdRecipe);
                 if (recipe.IdItemA != null)
                 {
                     Item itemA = await itemRepo.GetByIdAsync((int)recipe.IdItemA);

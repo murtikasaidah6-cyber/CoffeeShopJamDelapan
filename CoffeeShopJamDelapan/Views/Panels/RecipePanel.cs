@@ -31,7 +31,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             _ = LoadAllAsync();
         }
 
-        private async Task<bool> ConfirmStockOkAsync(Recipe r)
+        private async Task<bool> ConfirmStockOkAsync(Prescription r)
         {
             var itemRepo = new ItemRepo();
             var check = new List<string>();
@@ -139,7 +139,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
                     selectedId = dgvRecipes.SelectedRows[0].Cells[1].Value as int?;
                 }
 
-                var r = new Recipe();
+                var r = new Prescription();
                 if (selectedId.HasValue)
                     r.IdReceipt = selectedId.Value;
 
@@ -315,7 +315,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
 
         private async Task LoadAllAsync()
         {
-            List<Recipe> list = await _repo.GetAllAsync(); // data recipe (transaksi)
+            List<Prescription> list = await _repo.GetAllAsync(); // data recipe (transaksi)
 
             var itemRepo = new ItemRepo();
             List<Item> items = await itemRepo.GetAllAsync(); // data item dan stocknya (master)

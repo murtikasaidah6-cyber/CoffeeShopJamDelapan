@@ -10,6 +10,7 @@ namespace CoffeeShopJamDelapan.Views.Forms
         }
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             textBoxUsername = new TextBox();
             textBoxPassword = new TextBox();
             buttonLogin = new Button();
@@ -32,14 +33,14 @@ namespace CoffeeShopJamDelapan.Views.Forms
             // 
             textBoxUsername.Location = new Point(327, 90);
             textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.Size = new Size(197, 23);
+            textBoxUsername.Size = new Size(197, 27);
             textBoxUsername.TabIndex = 2;
             // 
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(327, 130);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(197, 23);
+            textBoxPassword.Size = new Size(197, 27);
             textBoxPassword.TabIndex = 3;
             textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -50,13 +51,14 @@ namespace CoffeeShopJamDelapan.Views.Forms
             buttonLogin.Size = new Size(276, 34);
             buttonLogin.TabIndex = 4;
             buttonLogin.Text = "Login";
+            buttonLogin.Click += buttonLogin_Click_1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(248, 93);
             label1.Name = "label1";
-            label1.Size = new Size(60, 15);
+            label1.Size = new Size(75, 20);
             label1.TabIndex = 0;
             label1.Text = "Username";
             // 
@@ -65,7 +67,7 @@ namespace CoffeeShopJamDelapan.Views.Forms
             label2.AutoSize = true;
             label2.Location = new Point(248, 133);
             label2.Name = "label2";
-            label2.Size = new Size(57, 15);
+            label2.Size = new Size(70, 20);
             label2.TabIndex = 1;
             label2.Text = "Password";
             // 
@@ -83,7 +85,7 @@ namespace CoffeeShopJamDelapan.Views.Forms
             // 
             textBoxCaptcha.Location = new Point(411, 159);
             textBoxCaptcha.Name = "textBoxCaptcha";
-            textBoxCaptcha.Size = new Size(113, 23);
+            textBoxCaptcha.Size = new Size(113, 27);
             textBoxCaptcha.TabIndex = 14;
             // 
             // buttonRefreshCaptcha
@@ -101,9 +103,9 @@ namespace CoffeeShopJamDelapan.Views.Forms
             label3.Font = new Font("News706 BT", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(244, 20);
             label3.Name = "label3";
-            label3.Size = new Size(207, 42);
+            label3.Size = new Size(310, 52);
             label3.TabIndex = 16;
-            label3.Text = "Coffee Jam";
+            label3.Text = "Apotek Jam 8";
             // 
             // label4
             // 
@@ -111,13 +113,13 @@ namespace CoffeeShopJamDelapan.Views.Forms
             label4.Font = new Font("Ravie", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(442, 23);
             label4.Name = "label4";
-            label4.Size = new Size(38, 39);
+            label4.Size = new Size(49, 50);
             label4.TabIndex = 17;
             label4.Text = "8";
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.kopi_gelas;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(5, 15);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(226, 289);
@@ -157,7 +159,7 @@ namespace CoffeeShopJamDelapan.Views.Forms
             linkResetPassword.AutoSize = true;
             linkResetPassword.Location = new Point(248, 293);
             linkResetPassword.Name = "linkResetPassword";
-            linkResetPassword.Size = new Size(95, 15);
+            linkResetPassword.Size = new Size(118, 20);
             linkResetPassword.TabIndex = 20;
             linkResetPassword.TabStop = true;
             linkResetPassword.Text = "Forgot Password";

@@ -38,12 +38,12 @@
             memberToolStripMenuItem = new ToolStripMenuItem();
             transactionToolStripMenuItem = new ToolStripMenuItem();
             stockToolStripMenuItem = new ToolStripMenuItem();
+            historyToolStripMenuItem = new ToolStripMenuItem();
             panelFooter = new Panel();
             label1 = new Label();
             panelContent = new Panel();
             label2 = new Label();
             panelCart = new Panel();
-            historyToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panelFooter.SuspendLayout();
             SuspendLayout();
@@ -97,15 +97,15 @@
             // recipeToolStripMenuItem
             // 
             recipeToolStripMenuItem.Name = "recipeToolStripMenuItem";
-            recipeToolStripMenuItem.Size = new Size(81, 29);
-            recipeToolStripMenuItem.Text = "Recipe";
+            recipeToolStripMenuItem.Size = new Size(127, 29);
+            recipeToolStripMenuItem.Text = "Prescription";
             recipeToolStripMenuItem.Click += recipeToolStripMenuItem_Click;
             // 
             // memberToolStripMenuItem
             // 
             memberToolStripMenuItem.Name = "memberToolStripMenuItem";
-            memberToolStripMenuItem.Size = new Size(97, 29);
-            memberToolStripMenuItem.Text = "Member";
+            memberToolStripMenuItem.Size = new Size(84, 29);
+            memberToolStripMenuItem.Text = "Patient";
             memberToolStripMenuItem.Click += memberToolStripMenuItem_Click;
             // 
             // transactionToolStripMenuItem
@@ -118,9 +118,16 @@
             // stockToolStripMenuItem
             // 
             stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            stockToolStripMenuItem.Size = new Size(63, 29);
-            stockToolStripMenuItem.Text = "Item";
+            stockToolStripMenuItem.Size = new Size(104, 29);
+            stockToolStripMenuItem.Text = "Madicine";
             stockToolStripMenuItem.Click += stockToolStripMenuItem_Click;
+            // 
+            // historyToolStripMenuItem
+            // 
+            historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            historyToolStripMenuItem.Size = new Size(85, 29);
+            historyToolStripMenuItem.Text = "History";
+            historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
             // 
             // panelFooter
             // 
@@ -169,13 +176,6 @@
             panelCart.Size = new Size(333, 767);
             panelCart.TabIndex = 4;
             panelCart.Paint += panelCart_Paint;
-            // 
-            // historyToolStripMenuItem
-            // 
-            historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(85, 29);
-            historyToolStripMenuItem.Text = "History";
-            historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
             // 
             // AdminForm
             // 

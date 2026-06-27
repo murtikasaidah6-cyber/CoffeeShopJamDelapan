@@ -52,7 +52,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             RenderMenuThumbnails(found);
         }
 
-        private void RenderMenuThumbnails(List<Recipe> recipes)
+        private void RenderMenuThumbnails(List<Prescription> recipes)
         {
             flowLayoutMenu.Controls.Clear();
             int maxPerRow = 4;
@@ -152,7 +152,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
                 MessageBox.Show("Please select a member first.", "No Member Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }*/
-            if (s is Button b && b.Tag is Recipe rr)
+            if (s is Button b && b.Tag is Prescription rr)
             {
                 _cart.Add(new CartItem
                 {
