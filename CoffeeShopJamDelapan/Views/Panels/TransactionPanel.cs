@@ -14,7 +14,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
         private readonly RecipeRepo _recipeRepo = new();
         private readonly ItemRepo _itemRepo = new();
         private readonly MemberRepo _memberRepo = new();
-        
+
         private List<CartItem> _cart = new();
         private MyCartPanel _cartPanel;
 
@@ -52,7 +52,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             RenderMenuThumbnails(found);
         }
 
-        private void RenderMenuThumbnails(List<Prescription> recipes)
+        private void RenderMenuThumbnails(List<Recipe> recipes)
         {
             flowLayoutMenu.Controls.Clear();
             int maxPerRow = 4;
@@ -152,7 +152,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
                 MessageBox.Show("Please select a member first.", "No Member Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }*/
-            if (s is Button b && b.Tag is Prescription rr)
+            if (s is Button b && b.Tag is Recipe rr)
             {
                 _cart.Add(new CartItem
                 {
@@ -166,5 +166,9 @@ namespace CoffeeShopJamDelapan.Views.Panels
             }
         }
 
+        private void buttonDesert_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

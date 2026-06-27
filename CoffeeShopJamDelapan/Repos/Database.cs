@@ -7,7 +7,7 @@ namespace CoffeeShopJamDelapan.Repo
     {
         // 8 - 14 tradisional
         public static string ConnectionStringOldStyle { get; set; } 
-            = "Server=103.82.242.90;Port=3306;Database=db_coffee_shop_jam_delapan;Uid=exadash;Pwd=;";
+            = "Server=locahost;Port=3306;Database=db_coffee_shop_jam_delapan;Uid=exadash;Pwd=;";
 
         public static MySqlConnection GetConnectionOldStyle()
         {
@@ -17,11 +17,11 @@ namespace CoffeeShopJamDelapan.Repo
         // connection pool
         private static MySqlConnectionStringBuilder DefaultBuilder => new()
         {
-            Server = "103.82.242.90",
+            Server = "localhost",
             Port = 3306,
-            Database = "db_coffee_shop_delapan",
-            UserID = "exadash",
-            Password = "12Qpalzmxn.",
+            Database = "db_coffee_shop_jam_delapan",
+            UserID = "root",
+            Password = "",
             Pooling = true,
             MinimumPoolSize = 0,
             MaximumPoolSize = 100,

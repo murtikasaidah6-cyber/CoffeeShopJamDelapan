@@ -52,7 +52,7 @@ namespace CoffeeShopJamDelapan.Views.Forms
 
         private async void MenuButton_Click(object? sender, EventArgs e)
         {
-            if (sender is Button btn && btn.Tag is Prescription r)
+            if (sender is Button btn && btn.Tag is Recipe r)
             {
                 // try to find price from recipe or item_stock
                 double price = 0;

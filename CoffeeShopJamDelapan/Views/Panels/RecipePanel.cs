@@ -31,7 +31,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
             _ = LoadAllAsync();
         }
 
-        private async Task<bool> ConfirmStockOkAsync(Prescription r)
+        private async Task<bool> ConfirmStockOkAsync(Recipe r)
         {
             var itemRepo = new ItemRepo();
             var check = new List<string>();
@@ -139,14 +139,14 @@ namespace CoffeeShopJamDelapan.Views.Panels
                     selectedId = dgvRecipes.SelectedRows[0].Cells[1].Value as int?;
                 }
 
-                var r = new Prescription();
+                var r = new Recipe();
                 if (selectedId.HasValue)
                     r.IdReceipt = selectedId.Value;
 
                 r.Code = GenerateCode();
                 r.Name = textBox3.Text.Trim();
                 r.Type = comboBoxType.SelectedItem?.ToString();
-                r.Price   = Double.Parse(textBoxPrice.Text.Trim());
+                r.Price = Double.Parse(textBoxPrice.Text.Trim());
 
                 int? GetSelectedId(ComboBox cb)
                 {
@@ -315,7 +315,7 @@ namespace CoffeeShopJamDelapan.Views.Panels
 
         private async Task LoadAllAsync()
         {
-            List<Prescription> list = await _repo.GetAllAsync(); // data recipe (transaksi)
+            List<Recipe> list = await _repo.GetAllAsync(); // data recipe (transaksi)
 
             var itemRepo = new ItemRepo();
             List<Item> items = await itemRepo.GetAllAsync(); // data item dan stocknya (master)
@@ -421,6 +421,11 @@ namespace CoffeeShopJamDelapan.Views.Panels
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             g.DrawImage(src, 0, 0, newW, newH);
             return bmp;
+        }
+
+        private void RecipePanel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

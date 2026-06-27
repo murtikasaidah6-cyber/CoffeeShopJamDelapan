@@ -66,7 +66,7 @@
             buttonCoffee.Name = "buttonCoffee";
             buttonCoffee.Size = new Size(80, 29);
             buttonCoffee.TabIndex = 2;
-            buttonCoffee.Text = "Coffee";
+            buttonCoffee.Text = "Vitamin";
             buttonCoffee.UseVisualStyleBackColor = false;
             // 
             // buttonNonCoffee
@@ -76,7 +76,7 @@
             buttonNonCoffee.Name = "buttonNonCoffee";
             buttonNonCoffee.Size = new Size(92, 29);
             buttonNonCoffee.TabIndex = 3;
-            buttonNonCoffee.Text = "Non-Coffee";
+            buttonNonCoffee.Text = "obat capsul";
             buttonNonCoffee.UseVisualStyleBackColor = false;
             // 
             // buttonAppetizer
@@ -86,7 +86,7 @@
             buttonAppetizer.Name = "buttonAppetizer";
             buttonAppetizer.Size = new Size(94, 29);
             buttonAppetizer.TabIndex = 4;
-            buttonAppetizer.Text = "Appetizer";
+            buttonAppetizer.Text = "Alat";
             buttonAppetizer.UseVisualStyleBackColor = false;
             // 
             // buttonMainCourse
@@ -96,7 +96,7 @@
             buttonMainCourse.Name = "buttonMainCourse";
             buttonMainCourse.Size = new Size(94, 29);
             buttonMainCourse.TabIndex = 5;
-            buttonMainCourse.Text = "Main-Course";
+            buttonMainCourse.Text = "kapsul";
             buttonMainCourse.UseVisualStyleBackColor = false;
             // 
             // buttonDesert
@@ -106,8 +106,9 @@
             buttonDesert.Name = "buttonDesert";
             buttonDesert.Size = new Size(94, 29);
             buttonDesert.TabIndex = 6;
-            buttonDesert.Text = "Desert";
+            buttonDesert.Text = "infus";
             buttonDesert.UseVisualStyleBackColor = false;
+            buttonDesert.Click += buttonDesert_Click;
             // 
             // label2
             // 

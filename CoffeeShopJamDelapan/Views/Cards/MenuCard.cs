@@ -14,9 +14,9 @@ namespace CoffeeShopJamDelapan.Views.Cards
     {
         private List<CartItem> _cart;
         private MyCartPanel _cartPanel;
-        private Prescription _recipe;
+        private Recipe _recipe;
 
-        public MenuCard(Prescription recipe, List<CartItem> cart, MyCartPanel cartPanel)
+        public MenuCard(Recipe recipe, List<CartItem> cart, MyCartPanel cartPanel)
         {
             InitializeComponent();
             _cart = cart;

@@ -13,9 +13,9 @@ namespace CoffeeShopJamDelapan.Views.Cards
     public partial class OrderCard : UserControl
     {  
        private readonly PaymentPanel _paymentPanel;
-        private readonly Prescription _recipe;
+        private readonly Recipe _recipe;
     
-        public OrderCard(Prescription recipe, PaymentPanel paymentPanel, TransactionDetails transactionDetails)// coonstructor
+        public OrderCard(Recipe recipe, PaymentPanel paymentPanel, TransactionDetails transactionDetails)// coonstructor
         {
             InitializeComponent();
             _recipe = recipe;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             comboBoxType = new ComboBox();
             comboBoxA = new ComboBox();
             comboBoxB = new ComboBox();
@@ -60,16 +61,19 @@
             buttonImageClear = new Button();
             label10 = new Label();
             label11 = new Label();
+            recipeBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRecipes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)recipeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // comboBoxType
             // 
+            comboBoxType.DataSource = recipeBindingSource;
             comboBoxType.FormattingEnabled = true;
             comboBoxType.Location = new Point(103, 25);
             comboBoxType.Margin = new Padding(3, 4, 3, 4);
@@ -365,6 +369,10 @@
             label11.TabIndex = 31;
             label11.Text = "List Menu";
             // 
+            // recipeBindingSource
+            // 
+            recipeBindingSource.DataSource = typeof(Models.Recipe);
+            // 
             // RecipePanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -404,12 +412,14 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "RecipePanel";
             Size = new Size(902, 767);
+            Load += RecipePanel_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRecipes).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)recipeBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -448,5 +458,6 @@
         private Button buttonImageClear;
         private Label label10;
         private Label label11;
+        private BindingSource recipeBindingSource;
     }
 }

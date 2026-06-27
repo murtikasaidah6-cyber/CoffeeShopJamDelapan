@@ -65,12 +65,13 @@ namespace CoffeeShopJamDelapan.Views.Forms
 
             // ========================================================
 
-            MessageBox.Show($"Welcome {member.Name ?? member.Username}");
+            MessageBox.Show($"Welcome {member.FullName ?? member.Username}");
 
             // open admin form for simplicity
             var f = new AdminForm();
-            f.Show();
             this.Hide();
+            f.ShowDialog();
+            this.Close();
         }
 
         private void ButtonRegister_Click(object? sender, EventArgs e)
